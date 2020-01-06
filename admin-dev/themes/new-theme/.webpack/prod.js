@@ -30,14 +30,8 @@ function prodConfig(analyze) {
     })
   );
 
-  // Required for Vue production environment
-  prod.plugins.push(
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    })
-  );
-
   return prod;
+
 }
 
 module.exports = prodConfig;

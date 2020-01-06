@@ -69,7 +69,6 @@ final class CurrencyFormDataProvider implements FormDataProviderInterface
             'iso_code' => $result->getIsoCode(),
             'names' => $result->getNames(),
             'symbols' => $result->getSymbols(),
-            'transformations' => $result->getTransformations(),
             'exchange_rate' => $result->getExchangeRate(),
             'precision' => $result->getPrecision(),
             'shop_association' => $result->getAssociatedShopIds(),
