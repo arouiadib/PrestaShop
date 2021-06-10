@@ -53,8 +53,8 @@ use PrestaShop\PrestaShop\Core\Domain\Category\QueryResult\EditableCategory;
 use PrestaShop\PrestaShop\Core\Domain\Category\ValueObject\CategoryId;
 use RuntimeException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Tests\Integration\Behaviour\Features\Context\Domain\Product\UpdateCategoriesFeatureContext;
 use Tests\Integration\Behaviour\Features\Context\Domain\Product\AddProductFeatureContext;
+use Tests\Integration\Behaviour\Features\Context\Domain\Product\UpdateCategoriesFeatureContext;
 use Tests\Integration\Behaviour\Features\Context\SharedStorage;
 use Tests\Integration\Behaviour\Features\Context\Util\CategoryTreeIterator;
 use Tests\Integration\Behaviour\Features\Context\Util\PrimitiveUtils;
@@ -520,8 +520,8 @@ class CategoryFeatureContext extends AbstractDomainFeatureContext
     }
 
     /**
-    * @When I add product :arg1 with following information:
-    */
+     * @When I add product :arg1 with following information:
+     */
     public function iAddProductWithFollowingInformation($arg1, TableNode $table)
     {
         $addProductFeatureContext = new AddProductFeatureContext();
@@ -545,13 +545,12 @@ class CategoryFeatureContext extends AbstractDomainFeatureContext
      *
      * @param string $productReference
      * @param TableNode $table
-    */
+     */
     public function assertProductCategories(string $productReference, TableNode $table)
     {
         $updateCategoriesContext = new UpdateCategoriesFeatureContext();
         $updateCategoriesContext->assertProductCategories($productReference, $table);
     }
-
 
     /**
      * @param CategoryForTree[] $actualCategories
