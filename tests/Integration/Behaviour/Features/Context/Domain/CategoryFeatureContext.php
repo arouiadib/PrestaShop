@@ -520,7 +520,7 @@ class CategoryFeatureContext extends AbstractDomainFeatureContext
     }
 
     /**
-     * @When I add product :arg1 with following information:
+     * @When I create product :arg1 with following information:
      */
     public function iAddProductWithFollowingInformation($arg1, TableNode $table)
     {
@@ -529,7 +529,7 @@ class CategoryFeatureContext extends AbstractDomainFeatureContext
     }
 
     /**
-     * @When I assign product :productReference to following categories:
+     * @When I set product :productReference to following categories:
      *
      * @param string $productReference
      * @param TableNode $table
@@ -541,7 +541,7 @@ class CategoryFeatureContext extends AbstractDomainFeatureContext
     }
 
     /**
-     * @Then product :productReference should be assigned to following categories:
+     * @Then the product :productReference should be assigned to following categories:
      *
      * @param string $productReference
      * @param TableNode $table
