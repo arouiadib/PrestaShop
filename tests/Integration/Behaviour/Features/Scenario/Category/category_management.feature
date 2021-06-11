@@ -42,36 +42,49 @@ Feature: Category Management
     Then category "category1" does not exist
 
   Scenario: Delete category choosing mode "associate and disable"
+            Product associated to only this category
     When I add product "product1" with following information:
-      | name[en-US] | eastern european tracksuit |
+      | name[en-US] | eastern african tracksuit  |
       | type        | standard                   |
     And I assign product "product1" to following categories:
-      | categories       | [ category1, category2 ]         |
-      | default category | category1                        |
-    And I add product "product2" with following information:
-      | name[en-US] | eastern european jacket    |
-      | type        | standard                   |
-    And I assign product "product2" to following categories:
-      | categories       | [ home-accessories, category1, category2 ]  |
-      | default category | category2                                   |
-    And I add product "product3" with following information:
-      | name[en-US] | eastern european jacket    |
-      | type        | standard                   |
-    And I assign product "product3" to following categories:
-      | categories       | [ category1, category2 ]         |
-      | default category | category2                        |
+      | categories       | [ category1 ]         |
+      | default category | category1             |
     And I delete category "category1" choosing mode "associate_and_disable"
     Then category "category1" does not exist
     And product product1 should be assigned to following categories:
-      | categories       | [ category2 ]               |
-      | default category | category2                   |
-    And product product2 should be assigned to following categories:
-      | categories       | [ home-accessories, category2 ]         |
-      | default category | home-accessories                        |
-    And product product3 should be assigned to following categories:
-      | categories       | [ category2 ]               |
-      | default category | category2                   |
+      | categories       | [ home-accessories ]  |
+      | default category | home-accessories      |
 
+  Scenario: Delete category
+            Product associated to this category and other categories
+            Deleted category is default category
+    When I add product "product2" with following information:
+      | name[en-US] | eastern european tracksuit             |
+      | type        | standard                               |
+    And I assign product "product2" to following categories:
+      | categories       | [ category1, category2 ]          |
+      | default category | category1                         |
+    And I delete category "category1" choosing mode "associate_and_disable"
+    Then category "category1" does not exist
+    And product product2 should be assigned to following categories:
+      | categories       | [ home-accessories, category2 ]   |
+      | default category | home-accessories                  |
+
+  Scenario: Delete category
+            Product associated to this category and other categories
+            Deleted category is not default category
+    When I add product "product3" with following information:
+      | name[en-US] | eastern asian tracksuit                |
+      | type        | standard                               |
+    And I assign product "product3" to following categories:
+      | categories       | [ category1, category2 ]          |
+      | default category | category1                         |
+    And I delete category "category1" choosing mode "associate_and_disable"
+    Then category "category1" does not exist
+    And product product3 should be assigned to following categories:
+      | categories       | [ home-accessories, category2 ]   |
+      | default category | category2                         |
+    
   Scenario: Bulk delete categories
     When I add new category "category2" with following details:
       | Name                 | PC parts 2       |
